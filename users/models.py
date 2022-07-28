@@ -32,3 +32,4 @@ class User(AbstractUser):
     shoe_size = models.CharField(choices=SHOE_SIZE_CHOICES, max_length=3, blank=True)
     is_ad_message = models.BooleanField(default=False)
     is_ad_email = models.BooleanField(default=False)
+    

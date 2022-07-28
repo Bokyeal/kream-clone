@@ -43,6 +43,7 @@ PROJECT_APPS = [
     "users.apps.UsersConfig",
     "products.apps.ProductsConfig",
     "core.apps.CoreConfig",
+    "lists.apps.ListsConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
@@ -62,7 +63,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -132,5 +133,8 @@ STATIC_URL = "/static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
 AUTH_USER_MODEL = "users.User"
+
+MEDIA_ROOT=BASE_DIR / "uploads"
+
+MEDIA_URL="/media/" #장고에 올라간 이미지를 저장할 경로 --> 실제론 서버로 올리게 될 것

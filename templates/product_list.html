@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>제품 목록</h1>
+    {% for product in products %}
+    <p>{{product.name_en}}</p>
+    <p>{{product.name_ko}}</p>
+    <p>{{product.name}}</p>
+    <p>{{product.released}}</p>
+    {% for product_image in product.photo_set.all %}
+    <img src="{{ product_image.image.url }}" alt="상품사진" />
+    {% endfor %}
+    <p></p>
+    {% endfor %}
+</body>
+
+</html>
