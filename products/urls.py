@@ -5,5 +5,6 @@ app_name="products"  #config에서 include에 사용할 이름
 
 
 urlpatterns=[
-    path('', views.product_list),
+    # path('', views.product_list),
+    path('', views.ProductListView.as_view()),
 ]
