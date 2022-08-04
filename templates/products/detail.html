@@ -1,0 +1,10 @@
+{% extends 'products/base.html'%}
+
+{% block title%} 상세페이지 {%endblock title%}
+{% block contents%}
+{{product}}
+{% for photo in product.photo_set.all %}
+<img src="{{photo.image.url}}" alt="{{product.name_ko}}" style="height: 200px; width:200px;" />  
+{% comment %} photo.image에서 image는 포토 모델 안에있는 변수명 {% endcomment %}
+{%endfor%}
+{%endblock contents%}

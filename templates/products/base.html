@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}{% endblock title%}</title>
+</head>
+<body>
+    {% include 'products/header.html'%}
+    {% comment %} 해당 템플릿을 포함/ 같은 경로라도 경로를 정확히 지정해야함 {% endcomment %}
+    {% block contents %}
+    {% comment %} block 뒤 이름은 상속받는 템플릿에서 사용함 {% endcomment %}
+    {% endblock contents %}
+    {% include 'products/footer.html'%}
+</body>
+</html>

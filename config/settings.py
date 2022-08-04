@@ -44,6 +44,7 @@ PROJECT_APPS = [
     "products.apps.ProductsConfig",
     "core.apps.CoreConfig",
     "lists.apps.ListsConfig",
+    "style.apps.StyleConfig",
 ]
 
 THIRD_PARTY_APPS =["django_seed"]

@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from . import models
 from math import ceil
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.utils import timezone
 # Create your views here.
 
@@ -39,9 +39,32 @@ class ProductListView(ListView):
     #paginate_orphans   페이지를 이루기 위한 최소 단위       https://ccbv.co.uk/projects/Django/3.2/django.views.generic.list/ListView/
 
     #변수를 html에서 사용하기 위한 메서드. []안에 이름과 = 뒤에 값을 쓴다.
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs):#다른 변수를 추가적으로 사용하기 위한 메서드
         context = super().get_context_data(**kwargs)
         context["now"] = timezone.now()
         context["hans"]= 'im hans' # 추가하고 싶으면 context[] 해서 더 추가하면 됨
         return context
-    
+
+
+def test(request):
+    return render(request, 'products/test.html')
+
+
+#FBV
+# def detail(request, pk):
+#     #에러처리법
+#     # try:
+#     #     product=models.Product.objects.get(pk=pk)
+#     #     return render(request, 'products/detail.html', {'product': product})
+#     # except models.Product.DoesNotExist:  #범위를 넘는 요청
+#     #     return redirect("/products")
+#     # except Exception:               #모든 에러
+#     #     return redirect("/products")
+
+#     product=models.Product.objects.get(pk=pk)
+#     print(product)
+#     return render(request, 'products/detail.html', {'product': product})
+
+class ProductDetail(DetailView):
+    model=models.Product
+    template_name='products/detail.html'

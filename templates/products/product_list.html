@@ -12,17 +12,14 @@
     <h1>제품 목록</h1>
     {% for product in products %}
 
-
-    <p>{{product.name_en}}</p>
-    <p>{{product.name_ko}}</p>
-    <p>{{product.name}}</p>
-    <p>{{product.released}}</p>
-
+    <a href="{% url 'products:detail' product.pk %}">
+        <p>{{product.name_en}}</p>
+    </a>
+    {% comment %} <img src="{{product.photo_set.first.image.url}}" alt="이미지" /> {% endcomment %}
 
     {% for product_image in product.photo_set.all %}
-    <img src="{{ product_image.image.url }} style="width: 300px;" alt="상품사진" />
+    <img src="{{ product_image.image.url }}" style="width:100px;" alt="상품사진" />
     {% endfor %}
-
 
     <p></p>
     {% endfor %}
@@ -37,16 +34,16 @@
     <h3> {{page_obj.number}} 현재 페이지</h3>
 
     {% if page_obj.has_previous %}
-    <a href="?page={{page_obj.number|add:'-1'}}">Previews</a>
+    <a href="?page={{page_obj.number|add:'-1'}}">Previews1</a>
     {% endif %}
     {% if page_obj.has_next %}
-    <a href="?page={{page_obj.number|add:'1'}}">Next</a>
+    <a href="?page={{page_obj.number|add:'1'}}">Next1</a>
     {% endif %}
 
     <br>
 
     {%comment %} 버튼 {%endcomment%}
-    {% if page != 1 %}
+    {% comment %} {% if page != 1 %}
     <a href="?page={{page|add:'-1'}}">Previews</a>
     {% endif %}
     {% if page != products.paginator.num_pages  %}
@@ -55,7 +52,7 @@
     <h1>
         {{now}}
         {{hans}}
-    </h1>
+    </h1> {% endcomment %}
 
 </body>
 
