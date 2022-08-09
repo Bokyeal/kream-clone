@@ -1,0 +1,29 @@
+{% extends 'products/base.html'%}
+
+{% block title%} Search {%endblock title%}
+{% block contents%}
+<form methon="get" action="">
+    {% comment %} <input name="keyword" type="text" placeholder="검색을 해주세요" {% if keyword %}value="{{keyword}}"{% endif %} /> {% endcomment %}
+    {{form}}
+    <br>
+    <br>
+    <br>
+    <br>
+     {% comment %} <div>
+    <input type="checkbox" name="price" id="price_-100000" value="-100000" {% if '-100000' in price %}checked{% endif %}>
+    <label for="price_-100000">10만원 이하</label> 
+    <input type="checkbox" name="price" id="price_100000-300000" value="100000-300000" {% if '100000-300000' in price %}checked{% endif %}>
+    <label for="price_100000-300000">10만원-30만원 이하</label> 
+    <input type="checkbox" name="price" id="price_300000-500000" value="300000-500000" {% if '300000-500000' in price %}checked{% endif %}>
+    <label for="price_300000-500000">30만원- 50만원이하</label> 
+    <input type="checkbox" name="price" id="price_500000" value="500000" {% if '500000' in price %}checked{% endif %}> <!--name에다가 쓰는 값은 url에 적히는 값, id는 label이랑 연결, value는 name쓴값 뒤에 = '' 가 쓰이는 값-->
+    <label for="price_500000">50만원 이상</label> 
+    </div> {% endcomment %}
+    <button>검색</button> 
+</form>
+<p> 검색페이지</p>
+
+{%for result in results%}
+<p>{{result}} /// {{result.released_price}}</p>
+{%endfor%}
+{%endblock contents%}

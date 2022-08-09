@@ -15,7 +15,7 @@ class StyleImage(TimeStampedModel):
 class Style(TimeStampedModel):
     user = models.ForeignKey(User, verbose_name="사용자", on_delete=models.CASCADE)
     title=models.CharField(max_length=50, verbose_name='post')
-    products=models.ManyToManyField("products.Product", related_name='products')
+    products=models.ManyToManyField("products.Product", related_name='products') # related_name은 역참조용, 즉 Product모델에서 Product.<related_name>을 쓰면  <이름>_set 대신에 역참조가 가능해짐
     
     def __str__(self):
         return '{}의 STYLE'.format(self.user)

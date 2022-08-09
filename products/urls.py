@@ -9,5 +9,6 @@ urlpatterns=[
     path('', views.ProductListView.as_view()),
     path('test/', views.test),
     # path('<int:pk>/', views.detail, name="detail"),  # int:뒤에 이름은 자유롭게. 그 이름을 views의 인자로 사용
-    path("<int:pk>", views.ProductDetail.as_view(), name="detail")
+    path("<int:pk>", views.ProductDetail.as_view(), name="detail"),
+    path("search/", views.search, name='search'),
 ]
