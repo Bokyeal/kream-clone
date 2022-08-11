@@ -3,32 +3,50 @@
 {% block title %}STYLE | KREAM{% endblock title %}
 
 {% block contents %}
+<main>
+    <div class="container">
 
+        <div class="style">
+        {% for style in styles %}
 
-{% for style in styles %}
+            <div class="style_box">        
+                {% for pic in style.styleimage_set.all %}
+                <img class="user_img" src="{{pic.image.url}}"  alt="스타일" />
+                {% endfor %}
+                    
 
-<p>
-    작성자: {{style.user}}
-</p>
-{% for pic in style.styleimage_set.all %}
-<img src="{{pic.image.url}}" style="height:200px" alt="스타일" />
-{% endfor %}
-<p>
-{{style.title}}
-</p>
-<p>
-상품태그 {{style.products.count}}개
-</p>
-
-{% for pro in style.products.all %}
-<img src="{{pro.photo_set.first.image.url}}"  style="height:200px" alt='이미지'/>
-
-<p>이름{{pro.name_en}}</p>
-<p>가격 {{pro.released_price}}원</p>
-<p></p>
-{% endfor %}
-
-
-{% endfor %}
-
+                <div class="user_info">
+                    <div class="user_info_img">
+                        <img class="user_profile" src="{{style.user.avatar.url}}" alt="유저 프로필" /> 
+                    </div>
+                    <div class="user_info_name">
+                        <p>{{style.user}}</p>
+                    </div>
+                </div>
+                <p class="style_title">
+                    {{style.title}}
+                </p>
+                
+                <div class="product_img">
+                    {% for pro in style.products.all %}
+                    <div class="product">
+                        <div class="product_info">
+                            <img src="{{pro.photo_set.first.image.url}}"  style="height:200px" alt='이미지'/>
+                            <div class="product_name">
+                                <p class="product_name">{{pro.name_en}}</p>
+                                <p class="product_price">{{pro.released_price}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p ></p>
+                    {% endfor %}
+                </div>
+                
+            </div>
+                
+                {% endfor %}
+            </div>
+            
+    </div>
+</main>
 {% endblock contents %}

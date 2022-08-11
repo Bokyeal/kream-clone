@@ -1,0 +1,28 @@
+{% extends 'users/base.html' %}
+
+{% block title%}
+Login
+{% endblock title%}
+
+{% block content%}
+<form method="post" action="{% url 'users:login' %}">
+    {% csrf_token %}
+    {% comment %} <input type = "text" name="email" placeholder="예) kream@kream.co.kr" /> <!-- name은 뷰의 get함수에서 사용될 이름-->
+    <input type="password" name="password"/> {% endcomment %}
+    {% comment %} {{form.as_p}} <!-- {{form.as_p}}는 p태그로 감싸지면서 나열함--> {% endcomment %}
+
+    {% for field in form %}
+    <p>
+        {{field}}
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <span class="text-red-700 font-medium text-sm">{{error}}</span>
+            {% endfor %}
+        {% endif %}
+    </p>
+    {% endfor%}
+
+
+    <button type="submit">로그인</button>
+</form>
+{% endblock content%}

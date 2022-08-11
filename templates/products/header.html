@@ -1,1 +1,12 @@
-<header>Kream</header>
+<header>
+    <div>
+        <a>고객</a>
+        <a>장바</a>
+        <a>개인</a>
+        {% if user.is_authenticated %} <!-- user는 기본 장고 변수임 -->
+        <a href="{% url 'users:logout'%}">로그아웃</a>
+        {% else %}
+        <a href="{% url 'users:login' %}">로그인</a>
+        {% endif %}
+    </div>
+</header>
