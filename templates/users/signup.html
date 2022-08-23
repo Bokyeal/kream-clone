@@ -9,7 +9,7 @@
 
     {% for field in form %}
     <p>
-        {{field.label}} : {{field}}
+        {{field.label}} : {{field}} <!--label은 verbose_name-->
         {% if field.errors %}
             {% for error in field.errors %}
                 <span class="text-red-700 font-medium text-sm">{{error}}</span>
@@ -21,4 +21,4 @@
 
     <button type="submit">회원가입</button>
 </form>
-{% endblock content%}
+{% endblock content %}

@@ -65,6 +65,6 @@ class SignUpForm(forms.ModelForm):
         user=super().save(commit=False) # True 하면 바로 db에 저장함. email필드를 수정하기 위해 False쓴거임
         email = self.cleaned_data.get('email')
         password= self.cleaned_data.get('password')
-        user.username = email
+        user.username = email # fields를 안 가져와서 씀
         user.set_password(password) # 자동 해쉬화
         user.save()
